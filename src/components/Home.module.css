@@ -1,0 +1,61 @@
+.layout {
+  height: 100%;
+  background-color: white;
+}
+
+.logo {
+  font-family: "Jua", sans-serif;
+}
+
+.button {
+  border-color: #28546a;
+  background-color: #28546a;
+  text-transform: uppercase;
+  border-radius: 1px;
+  border-width: 2px;
+  color: white;
+}
+
+.item_box {
+  position: relative;
+  cursor: pointer;
+  background: royalblue;
+}
+
+.item_img {
+  width: 100%;
+  height: calc(100% - 30px);
+}
+
+.item_info {
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item_md {
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
+  width: 30px;
+}
+
+.item_title {
+  width: 60%;
+  height: 30px;
+  margin-left: 40px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  overflow: hidden;
+}
+
+.item_price {
+  width: 60px;
+  padding-right: 10px;
+}
