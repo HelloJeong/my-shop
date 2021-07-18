@@ -1,13 +1,28 @@
 import { Button, Col, PageHeader, Row } from "antd";
 import Layout, { Content, Footer } from "antd/lib/layout/layout";
+import { useEffect } from "react";
+import { ProductType } from "../type";
 import style from "./Home.module.css";
 
 interface HomeProp {
+  products: ProductType[] | null;
+  loading: boolean;
+  error: Error | null;
   goCart: () => void;
-  getProduct: () => void;
+  getProducts: () => void;
 }
 
-const Home: React.FC<HomeProp> = ({ goCart, getProduct }) => {
+const Home: React.FC<HomeProp> = ({
+  products,
+  loading,
+  error,
+  goCart,
+  getProducts,
+}) => {
+  useEffect(() => {
+    getProducts();
+  }, [getProducts]);
+
   return (
     <Layout className={style.layout}>
       <PageHeader
@@ -24,33 +39,41 @@ const Home: React.FC<HomeProp> = ({ goCart, getProduct }) => {
           </Button>,
         ]}
       />
-      <Content>
-        <Row
-          gutter={[
-            { xs: 8, sm: 16, md: 24, lg: 32 },
-            { xs: 8, sm: 16, md: 24, lg: 32 },
-          ]}
-        >
-          <Col xs={24} sm={12} md={8} lg={6}>
-            <div className={style.item_box}>
-              <img
-                src="https://via.placeholder.com/800.jpg"
-                alt="item"
-                className={style.item_img}
-              />
-              <div className={style.item_info} title="itemitemitemitemitem">
-                <img
-                  src="images/recommended.png"
-                  alt="md"
-                  className={style.item_md}
-                />
-                <h2 className={style.item_title}>itemitemitemitemitem</h2>
-                <span className={style.item_price}>1000원</span>
-              </div>
-            </div>
-          </Col>
-        </Row>
-      </Content>
+      {loading ? (
+        <Content>Loading ...</Content>
+      ) : (
+        <Content>
+          <Row
+            gutter={[
+              { xs: 8, sm: 16, md: 24, lg: 32 },
+              { xs: 8, sm: 16, md: 24, lg: 32 },
+            ]}
+          >
+            {products?.map((product) => (
+              <Col xs={24} sm={12} md={8} lg={6}>
+                <div className={style.item_box}>
+                  <img
+                    src={product.img}
+                    alt={product.title}
+                    className={style.item_img}
+                  />
+                  <div className={style.item_info} title={product.title}>
+                    {product.md && (
+                      <img
+                        src="images/recommended.png"
+                        alt="md추천"
+                        className={style.item_md}
+                      />
+                    )}
+                    <h2 className={style.item_title}>{product.title}</h2>
+                    <span className={style.item_price}>{product.price}</span>
+                  </div>
+                </div>
+              </Col>
+            ))}
+          </Row>
+        </Content>
+      )}
       <Footer>제작자 Jeong</Footer>
     </Layout>
   );

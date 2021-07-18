@@ -4,6 +4,7 @@ import reducer from "./modules/";
 import createSagaMiddleware from "@redux-saga/core";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { routerMiddleware } from "connected-react-router";
+import rootSaga from "./modules/rootSaga";
 
 const create = () => {
   const sagaMiddleware = createSagaMiddleware();
@@ -13,7 +14,7 @@ const create = () => {
       applyMiddleware(sagaMiddleware, routerMiddleware(history))
     )
   );
-  // sagaMiddleware.run();
+  sagaMiddleware.run(rootSaga);
   return store;
 };
 

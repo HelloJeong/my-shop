@@ -2,8 +2,6 @@ import { RouterState } from "connected-react-router";
 import { Reducer } from "react";
 import { AnyAction } from "redux";
 
-
-
 export interface ProductType {
   id: number;
   title: string;
@@ -33,5 +31,5 @@ export interface CartState {
 export interface RootState {
   products: ProductState;
   carts: CartState;
-  router: Reducer<RouterState<unknown>, AnyAction>
+  router: Reducer<RouterState<unknown>, AnyAction>;
 }
