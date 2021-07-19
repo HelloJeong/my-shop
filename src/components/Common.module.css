@@ -1,0 +1,16 @@
+.layout {
+  background-color: white;
+}
+
+.logo {
+  font-family: "Jua", sans-serif;
+}
+
+.button {
+  border-color: #28546a;
+  background-color: #28546a;
+  text-transform: uppercase;
+  border-radius: 1px;
+  border-width: 2px;
+  color: white;
+}

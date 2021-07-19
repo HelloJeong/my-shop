@@ -1,21 +1,3 @@
-.layout {
-  height: 100%;
-  background-color: white;
-}
-
-.logo {
-  font-family: "Jua", sans-serif;
-}
-
-.button {
-  border-color: #28546a;
-  background-color: #28546a;
-  text-transform: uppercase;
-  border-radius: 1px;
-  border-width: 2px;
-  color: white;
-}
-
 .item_box {
   position: relative;
   cursor: pointer;
@@ -58,4 +40,6 @@
 .item_price {
   width: 60px;
   padding-right: 10px;
+  text-align: right;
+  color: #2e2e2e;
 }

@@ -1,7 +1,6 @@
 import { RouterState } from "connected-react-router";
 import { Reducer } from "react";
 import { AnyAction } from "redux";
-
 export interface ProductType {
   id: number;
   title: string;

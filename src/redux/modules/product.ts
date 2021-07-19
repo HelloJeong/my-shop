@@ -53,7 +53,6 @@ function* getProductsSaga() {
   try {
     yield put(pending());
     const products: ProductType[] = yield call(ProductService.getProducts);
-    console.log(products);
     yield put(success(products));
   } catch (error) {
     yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));

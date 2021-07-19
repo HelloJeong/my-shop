@@ -7,7 +7,7 @@ function sleep(ms: number) {
 
 const getP = (): Promise<ProductType[]> => {
   return new Promise<ProductType[]>(async (resolve) => {
-    await sleep(2000);
+    await sleep(Math.floor(Math.random() * 1500));
     const dummy = getDummy(Math.floor(Math.random() * 10) + 5);
     resolve(dummy);
   });
