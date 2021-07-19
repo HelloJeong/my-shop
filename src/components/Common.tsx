@@ -1,5 +1,6 @@
 import { Button, PageHeader } from "antd";
 import Layout, { Footer } from "antd/lib/layout/layout";
+import { Link } from "react-router-dom";
 import useGoCart from "../hooks/useGoCart";
 import style from "./Common.module.css";
 
@@ -10,7 +11,11 @@ const Common: React.FC = ({ children }) => {
     <Layout className={style.layout}>
       <PageHeader
         className={style.header}
-        title={<h1 className={style.logo}>Jeong Mall</h1>}
+        title={
+          <Link to="/">
+            <h1 className={style.logo}>Jeong Mall</h1>
+          </Link>
+        }
         extra={[
           <Button
             key="1"
