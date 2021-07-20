@@ -1,9 +1,5 @@
-import React from 'react'
+import CartContainer from "../containers/CartContainer";
 
 export default function Cart() {
-  return (
-    <div>
-      <h1>Cart</h1>
-    </div>
-  )
+  return <CartContainer />;
 }

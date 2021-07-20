@@ -11,7 +11,7 @@ export default function getDummy(count: number): ProductType[] {
     obj.push({
       id: i,
       title: faker.lorem.sentence(),
-      content: faker.lorem.paragraphs(),
+      content: faker.lorem.paragraphs() + faker.lorem.paragraphs(),
       price: +faker.commerce.price() * 100,
       md: faker.datatype.boolean(),
       // img: "https://via.placeholder.com/800.jpg",
