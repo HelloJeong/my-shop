@@ -29,6 +29,6 @@ export interface CartState {
 
 export interface RootState {
   products: ProductState;
-  carts: CartState;
+  cart: CartState;
   router: Reducer<RouterState<unknown>, AnyAction>;
 }

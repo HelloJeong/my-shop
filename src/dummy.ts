@@ -1,6 +1,10 @@
 import faker from "faker";
 import { ProductType } from "./type";
 
+export function sleep(ms: number) {
+  return new Promise((resolve: any) => setTimeout(() => resolve(), ms));
+}
+
 export default function getDummy(count: number): ProductType[] {
   const obj: ProductType[] = [];
   for (let i = 0; i < count; i++) {
@@ -10,7 +14,8 @@ export default function getDummy(count: number): ProductType[] {
       content: faker.lorem.paragraphs(),
       price: +faker.commerce.price() * 100,
       md: faker.datatype.boolean(),
-      img: "https://via.placeholder.com/800.jpg",
+      // img: "https://via.placeholder.com/800.jpg",
+      img: faker.random.image(),
     });
   }
   return obj;

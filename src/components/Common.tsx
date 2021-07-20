@@ -1,10 +1,15 @@
-import { Button, PageHeader } from "antd";
+import { Badge, Button, PageHeader } from "antd";
 import Layout, { Footer } from "antd/lib/layout/layout";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import useGoCart from "../hooks/useGoCart";
+import { CartType, RootState } from "../type";
 import style from "./Common.module.css";
 
 const Common: React.FC = ({ children }) => {
+  const count = useSelector<RootState, CartType[] | null>(
+    (state) => state.cart.products
+  )?.length;
   const goCart = useGoCart();
 
   return (
@@ -17,14 +22,11 @@ const Common: React.FC = ({ children }) => {
           </Link>
         }
         extra={[
-          <Button
-            key="1"
-            type="primary"
-            className={style.button}
-            onClick={goCart}
-          >
-            cart
-          </Button>,
+          <Badge count={count} key="1">
+            <Button type="primary" className={style.button} onClick={goCart}>
+              cart
+            </Button>
+          </Badge>,
         ]}
       />
       {children}

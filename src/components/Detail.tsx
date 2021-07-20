@@ -1,15 +1,20 @@
 import { Button, InputNumber, Spin } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import { ProductType } from "../type";
 import Common from "./Common";
 import style from "./Detail.module.css";
 
 interface DetailProp {
   product: ProductType | undefined;
+  loading: boolean;
+  error: Error | null;
+  addCart: (quantity: number) => void;
 }
 
-const Detail: React.FC<DetailProp> = ({ product }) => {
-  if (product === undefined) {
+const Detail: React.FC<DetailProp> = ({ product, addCart, loading, error }) => {
+  const [quantity, setQuantity] = useState<number>(1);
+
+  if (product === undefined || loading) {
     return <Spin />;
   }
 
@@ -27,7 +32,11 @@ const Detail: React.FC<DetailProp> = ({ product }) => {
           <h2 className={style.item_title}>{product.title}</h2>
           <hr />
           <div className={style.item_price}>
-            <span>{product.price.toLocaleString()}원</span>
+            <span>
+              {product.price.toLocaleString()}원
+              {quantity > 1 &&
+                `(${(product.price * quantity).toLocaleString()}원)`}
+            </span>
           </div>
           <div className={style.items_bottom}>
             <InputNumber
@@ -36,8 +45,15 @@ const Detail: React.FC<DetailProp> = ({ product }) => {
               size="large"
               defaultValue={1}
               className={style.item_quantity}
+              value={quantity}
+              onChange={change}
+              onBlur={blur}
             />
-            <Button type="primary" className={style.item_button}>
+            <Button
+              type="primary"
+              onClick={click}
+              className={style.item_button}
+            >
               add cart
             </Button>
           </div>
@@ -45,6 +61,20 @@ const Detail: React.FC<DetailProp> = ({ product }) => {
       </div>
     </Common>
   );
+
+  function blur() {
+    if (quantity === null) {
+      setQuantity(1);
+    }
+  }
+
+  function change(value: number) {
+    setQuantity(value);
+  }
+
+  function click() {
+    addCart(quantity);
+  }
 };
 
 export default Detail;

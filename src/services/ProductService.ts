@@ -1,9 +1,5 @@
 import { ProductType } from "../type";
-import getDummy from "../dummy";
-
-function sleep(ms: number) {
-  return new Promise((resolve: any) => setTimeout(() => resolve(), ms));
-}
+import getDummy, { sleep } from "../dummy";
 
 const getP = (): Promise<ProductType[]> => {
   return new Promise<ProductType[]>(async (resolve) => {
