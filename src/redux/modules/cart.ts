@@ -71,7 +71,6 @@ function* addCartSaga(action: Action<CartType>) {
 
 function* updateCartSaga(action: Action<CartType>) {
   try {
-    console.log("update", action);
     yield put(pending());
     const carts: CartType[] = yield select((state) => state.cart.products);
     const find = carts.findIndex(
@@ -84,7 +83,21 @@ function* updateCartSaga(action: Action<CartType>) {
   }
 }
 
+function* deleteCartSaga(action: Action<number>) {
+  try {
+    yield put(pending());
+    const carts: CartType[] = yield select((state) => state.cart.products);
+    const filter: CartType[] = carts.filter(
+      (cart) => cart.product.id !== action.payload
+    );
+    yield put(success(filter));
+  } catch (error) {
+    yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));
+  }
+}
+
 export function* cartSaga() {
   yield takeEvery(`${prefix}/ADD_CART`, addCartSaga);
   yield takeEvery(`${prefix}/UPDATE_CART`, updateCartSaga);
+  yield takeEvery(`${prefix}/DELETE_CART`, deleteCartSaga);
 }

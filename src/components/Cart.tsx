@@ -5,7 +5,10 @@ import Common from "./Common";
 import style from "./Cart.module.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { updateCart as updateCartSagaStart } from "../redux/modules/cart";
+import {
+  updateCart as updateCartSagaStart,
+  deleteCart as deleteCartSagaStart,
+} from "../redux/modules/cart";
 
 interface CartProp {
   carts: CartType[] | null;
@@ -61,7 +64,9 @@ const Item: React.FC<ItemProp> = ({ item }) => {
     </>
   );
 
-  function deleteCart() {}
+  function deleteCart() {
+    dispatch(deleteCartSagaStart(item.product.id));
+  }
   function change(value: number) {
     setQuantity(value);
     if (value !== null) {
