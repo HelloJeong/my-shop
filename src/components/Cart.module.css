@@ -1,0 +1,39 @@
+.cart_wrap {
+  margin: 0 24px;
+}
+
+.info_wrap {
+  margin-bottom: 10px;
+}
+
+.info_wrap:last-child {
+  margin-bottom: 0px;
+}
+
+.item_img {
+  width: 100%;
+}
+
+.item_link {
+  font-size: 2rem;
+  text-decoration: none;
+  color: #2e2e2e;
+}
+
+.info_price,
+.info_delete {
+  text-align: right;
+}
+
+.total_price {
+  display: block;
+}
+.product_price {
+  font-size: 1rem;
+}
+
+.carts_total_price {
+  text-align: right;
+  margin-top: 10px;
+  font-size: 2rem;
+}
