@@ -22,7 +22,7 @@ const Common: React.FC = ({ children }) => {
           </Link>
         }
         extra={[
-          <Badge count={count} key="1">
+          <Badge count={count} key="badge">
             <Button type="primary" className={style.button} onClick={goCart}>
               cart
             </Button>

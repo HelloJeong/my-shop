@@ -6,5 +6,6 @@ export default function CartContainer() {
   const carts = useSelector<RootState, CartType[] | null>(
     (state) => state.cart.products
   );
+
   return <Cart carts={carts} />;
 }

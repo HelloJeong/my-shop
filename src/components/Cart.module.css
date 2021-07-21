@@ -1,5 +1,5 @@
 .cart_wrap {
-  margin: 0 24px;
+  margin: 0 24px 24px;
 }
 
 .info_wrap {
@@ -18,6 +18,10 @@
   font-size: 2rem;
   text-decoration: none;
   color: #2e2e2e;
+}
+
+.item_quantity {
+  width: 100%;
 }
 
 .info_price,

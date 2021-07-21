@@ -69,6 +69,22 @@ function* addCartSaga(action: Action<CartType>) {
   }
 }
 
+function* updateCartSaga(action: Action<CartType>) {
+  try {
+    console.log("update", action);
+    yield put(pending());
+    const carts: CartType[] = yield select((state) => state.cart.products);
+    const find = carts.findIndex(
+      (cart) => cart.product.id === action.payload.product.id
+    );
+    carts[find].quantity = action.payload.quantity;
+    yield put(success([...carts]));
+  } catch (error) {
+    yield put(fail(new Error(error?.response?.data?.error || "UNKNOWN_ERROR")));
+  }
+}
+
 export function* cartSaga() {
   yield takeEvery(`${prefix}/ADD_CART`, addCartSaga);
+  yield takeEvery(`${prefix}/UPDATE_CART`, updateCartSaga);
 }
