@@ -40,7 +40,7 @@ const Detail: React.FC<DetailProp> = ({ product, addCart, loading, error }) => {
               <span>
                 {product.price.toLocaleString()}원
                 {quantity > 1 &&
-                  `(${(product.price * quantity).toLocaleString()}원)`}
+                  ` (${(product.price * quantity).toLocaleString()}원)`}
               </span>
             </div>
             <div className={style.items_bottom}>
